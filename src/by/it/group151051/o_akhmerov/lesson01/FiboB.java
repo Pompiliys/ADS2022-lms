@@ -25,7 +25,12 @@ public class FiboB {
 
     BigInteger fastB(Integer n) {
         //здесь нужно реализовать вариант с временем O(n) и памятью O(n)
-        return BigInteger.ZERO;
+        BigInteger fiboNumbers[]=new BigInteger[n+1];
+        fiboNumbers[0] = BigInteger.ZERO;
+        fiboNumbers[1] = BigInteger.ONE;
+        for(int i = 2; i<=n; i++)
+            fiboNumbers[i] = fiboNumbers[i-1].add(fiboNumbers[i-2]);
+        return fiboNumbers[n];
     }
 
 }
