@@ -1,6 +1,8 @@
 package by.it.group151051.o_akhmerov.lesson02;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 /*
 даны события events
@@ -24,20 +26,20 @@ public class A_VideoRegistrator {
         //timeWorkDuration время работы видеокамеры после старта
         List<Double> result;
         result = new ArrayList<>();
-        int i=0;                              //i - это индекс события events[i]
-        //комментарии от проверочного решения сохранены для подсказки, но вы можете их удалить.
-        //подготовка к жадному поглощению массива событий
-        //hint: сортировка Arrays.sort обеспечит скорость алгоритма
-        //C*(n log n) + C1*n = O(n log n)
+        int i=0, arraylengt = events.length;                              //i - это индекс события events[i]
+        double start = 0, end = 0;
 
-        //пока есть незарегистрированные события
-        //получим одно событие по левому краю
-        //и запомним время старта видеокамеры
-        //вычислим момент окончания работы видеокамеры
-        //и теперь пропустим все покрываемые события
-        //за время до конца работы, увеличивая индекс
+        Arrays.sort(events);
 
-
+        while(i<arraylengt){
+            result.add(events[i]);
+            start = events[i];
+            end = start+workDuration;
+            i++;
+            while(i<arraylengt && events[i]<=end){
+                i++;
+            }
+        }
 
         return result;                        //вернем итог
     }
